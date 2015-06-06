@@ -34,9 +34,21 @@
     <string name="design">Design</string>
     <string name="develop">Develop</string>
 
+
     <array name="drawerIcons">
         <item>@drawable/ic_action_design</item>
         <item>@drawable/ic_action_develop</item>
+        <item>@drawable/ic_action_design</item>
+        <item>@drawable/ic_action_develop</item>
+        <item>@drawable/ic_action_design</item>
+        <item>@drawable/ic_action_develop</item>
+        <item>@drawable/ic_action_design</item>
+        <item>@drawable/ic_action_develop</item>
+        <item>@drawable/ic_action_design</item>
+        <item>@drawable/ic_action_develop</item>
+        <item>@drawable/ic_action_design</item>
+        <item>@drawable/ic_action_develop</item>
+        <item>@drawable/ic_action_design</item>
     </array>
 
 </resources>

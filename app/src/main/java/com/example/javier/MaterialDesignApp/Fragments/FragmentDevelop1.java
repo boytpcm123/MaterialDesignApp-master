@@ -40,7 +40,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FragmentDevelop extends Fragment {
+public class FragmentDevelop1 extends Fragment {
 
     String urlPost;
     JSONObject jsonObjectDevelopPosts;

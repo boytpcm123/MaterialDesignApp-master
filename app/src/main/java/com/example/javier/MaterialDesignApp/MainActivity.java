@@ -31,7 +31,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,7 +41,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.javier.MaterialDesignApp.Fragments.FragmentDesign;
-import com.example.javier.MaterialDesignApp.Fragments.FragmentDevelop;
 import com.example.javier.MaterialDesignApp.RecyclerView.RecyclerViewAdapters.DrawerAdapter;
 import com.example.javier.MaterialDesignApp.RecyclerView.RecyclerViewClasses.DrawerItem;
 import com.example.javier.MaterialDesignApp.RecyclerView.RecyclerViewUtils.ItemClickSupport;
@@ -597,7 +595,7 @@ public class MainActivity extends ActionBarActivity {
         FragmentManager fragmentManager;
         FragmentTransaction fragmentTransaction;
         switch (position) {
-            case 0:
+            default:
                 sharedPreferences.edit().putInt("FRAGMENT", 0).apply();
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
@@ -605,14 +603,7 @@ public class MainActivity extends ActionBarActivity {
                 fragmentTransaction.replace(R.id.fragment, fragmentDesign);
                 fragmentTransaction.commit();
                 break;
-            case 1:
-                sharedPreferences.edit().putInt("FRAGMENT", 1).apply();
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentDevelop fragmentDevelop = new FragmentDevelop();
-                fragmentTransaction.replace(R.id.fragment, fragmentDevelop);
-                fragmentTransaction.commit();
-                break;
+
         }
     }
 

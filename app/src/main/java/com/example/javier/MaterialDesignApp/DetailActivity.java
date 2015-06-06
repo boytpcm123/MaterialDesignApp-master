@@ -193,7 +193,7 @@ public class DetailActivity extends ActionBarActivity {
                 Document doc = Jsoup.connect(linkurl).userAgent(ua).get();
                 detail = "<!DOCTYPE html><head> <meta http-equiv=\"Content-Type\" "
                         + "content=\"text/html; charset=utf-8\"> </head>"
-                        + "<body style=\"background-color:transparent;\">"
+                        + "<body style=\"background-color:transparent;overflow-x:hidden;height:auto;\">"
                         + "<h3 style = \" color: red \">" + title + "</h2>";
                 detail += "<font size=\" 1.8em \" style = \" color: #005500 \"><em>"
                         + source + " - " + pubdate + "</em></font>";
