@@ -9,10 +9,8 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,22 +39,14 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.javier.MaterialDesignApp.Fragments.FragmentDesign;
-import com.example.javier.MaterialDesignApp.Fragments.FragmentDevelop;
 import com.example.javier.MaterialDesignApp.RecyclerView.RecyclerViewAdapters.DrawerAdapter;
 import com.example.javier.MaterialDesignApp.RecyclerView.RecyclerViewClasses.DrawerItem;
 import com.example.javier.MaterialDesignApp.RecyclerView.RecyclerViewUtils.ItemClickSupport;
-import com.example.javier.MaterialDesignApp.Utils.JsonParser;
-import com.example.javier.MaterialDesignApp.Utils.PicassoTransform.CircleTransformWhite;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 // You can check the methods that I use inside onCreate below menu methods
@@ -125,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
         navigationDrawer();
 
         // Setup drawer accounts toggle.
-        toogleButtonDrawer();
+       // toogleButtonDrawer();
 
         // Open settings method
         openSettings();
@@ -211,35 +200,35 @@ public class MainActivity extends ActionBarActivity {
             layoutParams.width = displayMetrics.widthPixels + (20 * Math.round(displayMetrics.density)) - displayMetrics.widthPixels / 2;
         }
 
-        name = sharedPreferences.getString("NAME", "");
-        if (!name.equals("")) {
-            textViewName = (TextView) findViewById(R.id.textViewName);
-            textViewName.setText(name);
-        }
-        username = sharedPreferences.getString("USERNAME", "");
-        if (!username.equals("")) {
-            textViewUsername = (TextView) findViewById(R.id.textViewUsername);
-            textViewUsername.setText(username);
-        }
-        file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/picture.png");
-        if (file.length() != 0) {
-            imageViewPicture = (ImageView) findViewById(R.id.imageViewPicture);
-            imageViewPicture.setImageDrawable(Drawable.createFromPath(file.toString()));
-        }
-        file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/cover.png");
-        if (file.length() != 0) {
-            imageViewCover = (ImageView) findViewById(R.id.imageViewCover);
-            imageViewCover.setImageDrawable(Drawable.createFromPath(file.toString()));
-        }
+//        name = sharedPreferences.getString("NAME", "");
+//        if (!name.equals("")) {
+//            textViewName = (TextView) findViewById(R.id.textViewName);
+//            textViewName.setText(name);
+//        }
+//        username = sharedPreferences.getString("USERNAME", "");
+//        if (!username.equals("")) {
+//            textViewUsername = (TextView) findViewById(R.id.textViewUsername);
+//            textViewUsername.setText(username);
+//        }
+//        file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/picture.png");
+//        if (file.length() != 0) {
+//            imageViewPicture = (ImageView) findViewById(R.id.imageViewPicture);
+//            imageViewPicture.setImageDrawable(Drawable.createFromPath(file.toString()));
+//        }
+//        file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/cover.png");
+//        if (file.length() != 0) {
+//            imageViewCover = (ImageView) findViewById(R.id.imageViewCover);
+//            imageViewCover.setImageDrawable(Drawable.createFromPath(file.toString()));
+//        }
 
-        if (!downloaded) {
-
-            // Get facebook items (name, username, picture, cover)
-            new AsyncTaskFacebookParseJson().execute(facebookID);
-
-        } else {
-            Toast.makeText(MainActivity.this, downloaded.toString(), Toast.LENGTH_SHORT).show();
-        }
+//        if (!downloaded) {
+//
+//            // Get facebook items (name, username, picture, cover)
+//            new AsyncTaskFacebookParseJson().execute(facebookID);
+//
+//        } else {
+//            Toast.makeText(MainActivity.this, downloaded.toString(), Toast.LENGTH_SHORT).show();
+//        }
 
         // Setup Drawer Icon
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
@@ -409,29 +398,29 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    public void toogleButtonDrawer() {
-        imageViewToogle = (ImageView) findViewById(R.id.imageViewToggle);
-        toggleButtonDrawer = (ToggleButton) findViewById(R.id.toggleButtonDrawer);
-        linearLayoutMain = (LinearLayout) findViewById(R.id.linearLayoutMain);
-        linearLayoutSecond = (LinearLayout) findViewById(R.id.linearLayoutSecond);
-        toggleButtonDrawer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!toggleButtonDrawer.isChecked()) {
-                    toggleButtonDrawer.setChecked(false);
-                    imageViewToogle.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_drop_down));
-                    linearLayoutMain.setVisibility(View.VISIBLE);
-                    linearLayoutSecond.setVisibility(View.GONE);
-                }
-                if (toggleButtonDrawer.isChecked()) {
-                    toggleButtonDrawer.setChecked(true);
-                    imageViewToogle.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_drop_up));
-                    linearLayoutMain.setVisibility(View.GONE);
-                    linearLayoutSecond.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-    }
+//    public void toogleButtonDrawer() {
+//        imageViewToogle = (ImageView) findViewById(R.id.imageViewToggle);
+//        toggleButtonDrawer = (ToggleButton) findViewById(R.id.toggleButtonDrawer);
+//        linearLayoutMain = (LinearLayout) findViewById(R.id.linearLayoutMain);
+//        linearLayoutSecond = (LinearLayout) findViewById(R.id.linearLayoutSecond);
+//        toggleButtonDrawer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!toggleButtonDrawer.isChecked()) {
+//                    toggleButtonDrawer.setChecked(false);
+//                    imageViewToogle.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_drop_down));
+//                    linearLayoutMain.setVisibility(View.VISIBLE);
+//                    linearLayoutSecond.setVisibility(View.GONE);
+//                }
+//                if (toggleButtonDrawer.isChecked()) {
+//                    toggleButtonDrawer.setChecked(true);
+//                    imageViewToogle.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_drop_up));
+//                    linearLayoutMain.setVisibility(View.GONE);
+//                    linearLayoutSecond.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
+//    }
 
 
     @Override
@@ -466,154 +455,162 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    public class AsyncTaskFacebookParseJson extends AsyncTask<String, String, String> {
-
-        // facebook urls
-        @Override
-        protected void onPreExecute() {
-        }
-
-        // get JSON Object
-        @Override
-        protected String doInBackground(String... url) {
-
-            urlName = url[0];
-            urlProfile = "https://graph.facebook.com/" + urlName;
-            urlPicture = "https://graph.facebook.com/" + urlName + "/picture?type=large&redirect=false";
-            urlCover = "https://graph.facebook.com/" + urlName + "/?fields=cover";
-
-            JSONObject jsonObjectProfile, jsonObjectPicture, jsonObjectCover;
-            try {
-                jsonObjectProfile = JsonParser.readJsonFromUrl(urlProfile);
-                jsonObjectPicture = JsonParser.readJsonFromUrl(urlPicture);
-                jsonObjectCover = JsonParser.readJsonFromUrl(urlCover);
-
-                // Storing each json item_post in variable
-                name = jsonObjectProfile.getString("name");
-                username = "Facebook ID: " + jsonObjectProfile.getString("username");
-                picture = jsonObjectPicture.getJSONObject("data").getString("url");
-                cover = jsonObjectCover.getJSONObject("cover").getString("source");
-
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        // Set facebook items to the textviews and imageviews
-        @Override
-        protected void onPostExecute(String strFromDoInBg) {
-            textViewName = (TextView) findViewById(R.id.textViewName);
-            textViewName.setText(name);
-            textViewUsername = (TextView) findViewById(R.id.textViewUsername);
-            textViewUsername.setText(username);
-            imageViewPicture = (ImageView) findViewById(R.id.imageViewPicture);
-            imageViewCover = (ImageView) findViewById(R.id.imageViewCover);
-
-            sharedPreferences = getSharedPreferences("VALUES", Context.MODE_PRIVATE);
-            editor = sharedPreferences.edit();
-            editor.putString("NAME", name);
-            editor.putString("USERNAME", username);
-            editor.apply();
-
-            folder = new File(Environment.getExternalStorageDirectory() + "/MaterialDesignApp");
-            if (!folder.exists()) {
-                folder.mkdirs();
-            }
-
-            Target targetPicture = new Target() {
-                @Override
-                public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/picture.png");
-                            try {
-                                file.createNewFile();
-                                FileOutputStream ostream = new FileOutputStream(file);
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
-                                ostream.close();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
-                    Toast.makeText(MainActivity.this, "Creating Picture", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-                }
-            };
-            Target targetCover = new Target() {
-                @Override
-                public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            File file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/cover.png");
-                            try {
-                                file.createNewFile();
-                                FileOutputStream ostream = new FileOutputStream(file);
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
-                                ostream.close();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-                }
-            };
-
-            Picasso.with(context).load(picture).transform(new CircleTransformWhite()).into(targetPicture);
-            Picasso.with(context).load(cover).into(targetCover);
-
-            imageViewPicture.setTag(targetPicture);
-            imageViewCover.setTag(targetCover);
-
-            Picasso.with(context).load(picture).placeholder(imageViewPicture.getDrawable()).transform(new CircleTransformWhite()).into(imageViewPicture);
-            Picasso.with(context).load(cover).placeholder(imageViewCover.getDrawable()).into(imageViewCover);
-
-            sharedPreferences = getSharedPreferences("VALUES", Context.MODE_PRIVATE);
-            editor = sharedPreferences.edit();
-            editor.putBoolean("DOWNLOAD", true);
-            editor.apply();
-        }
-    }
+//    public class AsyncTaskFacebookParseJson extends AsyncTask<String, String, String> {
+//
+//        // facebook urls
+//        @Override
+//        protected void onPreExecute() {
+//        }
+//
+//        // get JSON Object
+//        @Override
+//        protected String doInBackground(String... url) {
+//
+//            urlName = url[0];
+//            urlProfile = "https://graph.facebook.com/" + urlName;
+//            urlPicture = "https://graph.facebook.com/" + urlName + "/picture?type=large&redirect=false";
+//            urlCover = "https://graph.facebook.com/" + urlName + "/?fields=cover";
+//
+//            JSONObject jsonObjectProfile, jsonObjectPicture, jsonObjectCover;
+//            try {
+//                jsonObjectProfile = JsonParser.readJsonFromUrl(urlProfile);
+//                jsonObjectPicture = JsonParser.readJsonFromUrl(urlPicture);
+//                jsonObjectCover = JsonParser.readJsonFromUrl(urlCover);
+//
+//                // Storing each json item_post in variable
+//                name = jsonObjectProfile.getString("name");
+//                username = "Facebook ID: " + jsonObjectProfile.getString("username");
+//                picture = jsonObjectPicture.getJSONObject("data").getString("url");
+//                cover = jsonObjectCover.getJSONObject("cover").getString("source");
+//
+//            } catch (IOException | JSONException e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//
+//        // Set facebook items to the textviews and imageviews
+//        @Override
+//        protected void onPostExecute(String strFromDoInBg) {
+//            textViewName = (TextView) findViewById(R.id.textViewName);
+//            textViewName.setText(name);
+//            textViewUsername = (TextView) findViewById(R.id.textViewUsername);
+//            textViewUsername.setText(username);
+//            imageViewPicture = (ImageView) findViewById(R.id.imageViewPicture);
+//            imageViewCover = (ImageView) findViewById(R.id.imageViewCover);
+//
+//            sharedPreferences = getSharedPreferences("VALUES", Context.MODE_PRIVATE);
+//            editor = sharedPreferences.edit();
+//            editor.putString("NAME", name);
+//            editor.putString("USERNAME", username);
+//            editor.apply();
+//
+//            folder = new File(Environment.getExternalStorageDirectory() + "/MaterialDesignApp");
+//            if (!folder.exists()) {
+//                folder.mkdirs();
+//            }
+//
+//            Target targetPicture = new Target() {
+//                @Override
+//                public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/picture.png");
+//                            try {
+//                                file.createNewFile();
+//                                FileOutputStream ostream = new FileOutputStream(file);
+//                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
+//                                ostream.close();
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }).start();
+//                    Toast.makeText(MainActivity.this, "Creating Picture", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                @Override
+//                public void onBitmapFailed(Drawable errorDrawable) {
+//                }
+//
+//                @Override
+//                public void onPrepareLoad(Drawable placeHolderDrawable) {
+//                }
+//            };
+//            Target targetCover = new Target() {
+//                @Override
+//                public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            File file = new File(Environment.getExternalStorageDirectory().getPath() + "/MaterialDesignApp/cover.png");
+//                            try {
+//                                file.createNewFile();
+//                                FileOutputStream ostream = new FileOutputStream(file);
+//                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
+//                                ostream.close();
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }).start();
+//                }
+//
+//                @Override
+//                public void onBitmapFailed(Drawable errorDrawable) {
+//                }
+//
+//                @Override
+//                public void onPrepareLoad(Drawable placeHolderDrawable) {
+//                }
+//            };
+//
+//            Picasso.with(context).load(picture).transform(new CircleTransformWhite()).into(targetPicture);
+//            Picasso.with(context).load(cover).into(targetCover);
+//
+//            imageViewPicture.setTag(targetPicture);
+//            imageViewCover.setTag(targetCover);
+//
+//            Picasso.with(context).load(picture).placeholder(imageViewPicture.getDrawable()).transform(new CircleTransformWhite()).into(imageViewPicture);
+//            Picasso.with(context).load(cover).placeholder(imageViewCover.getDrawable()).into(imageViewCover);
+//
+//            sharedPreferences = getSharedPreferences("VALUES", Context.MODE_PRIVATE);
+//            editor = sharedPreferences.edit();
+//            editor.putBoolean("DOWNLOAD", true);
+//            editor.apply();
+//        }
+//    }
 
     public void setFragment(int position) {
         FragmentManager fragmentManager;
         FragmentTransaction fragmentTransaction;
-        switch (position) {
-            case 0:
-                sharedPreferences.edit().putInt("FRAGMENT", 0).apply();
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentDesign fragmentDesign = new FragmentDesign();
-                fragmentTransaction.replace(R.id.fragment, fragmentDesign);
-                fragmentTransaction.commit();
-                break;
-            case 1:
-                sharedPreferences.edit().putInt("FRAGMENT", 1).apply();
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentDevelop fragmentDevelop = new FragmentDevelop();
-                fragmentTransaction.replace(R.id.fragment, fragmentDevelop);
-                fragmentTransaction.commit();
-                break;
-        }
+
+        sharedPreferences.edit().putInt("FRAGMENT", 0).apply();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentDesign fragmentDesign = new FragmentDesign();
+        fragmentTransaction.replace(R.id.fragment, fragmentDesign);
+        fragmentTransaction.commit();
+
+//        switch (position) {
+//            case 0:
+//                sharedPreferences.edit().putInt("FRAGMENT", 0).apply();
+//                fragmentManager = getSupportFragmentManager();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentDesign fragmentDesign = new FragmentDesign();
+//                fragmentTransaction.replace(R.id.fragment, fragmentDesign);
+//                fragmentTransaction.commit();
+//                break;
+//            case 1:
+//                sharedPreferences.edit().putInt("FRAGMENT", 1).apply();
+//                fragmentManager = getSupportFragmentManager();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentDevelop fragmentDevelop = new FragmentDevelop();
+//                fragmentTransaction.replace(R.id.fragment, fragmentDevelop);
+//                fragmentTransaction.commit();
+//                break;
+//        }
     }
 
     /*@Override
