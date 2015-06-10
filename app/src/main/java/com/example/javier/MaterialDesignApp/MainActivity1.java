@@ -51,7 +51,7 @@ import java.util.ArrayList;
 
 // You can check the methods that I use inside onCreate below menu methods
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity1 extends ActionBarActivity {
     final Context context = this;
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
@@ -137,7 +137,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Dialog dialog = new Dialog(MainActivity.this);
+            Dialog dialog = new Dialog(MainActivity1.this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.about_dialog);
             dialog.show();
@@ -239,14 +239,14 @@ public class MainActivity extends ActionBarActivity {
 
         // statusBar color behind navigation drawer
         TypedValue typedValueStatusBarColor = new TypedValue();
-        MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValueStatusBarColor, true);
+        MainActivity1.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValueStatusBarColor, true);
         final int colorStatusBar = typedValueStatusBarColor.data;
         mDrawerLayout.setStatusBarBackgroundColor(colorStatusBar);
 
         // Setup RecyclerView inside drawer
         recyclerViewDrawer = (RecyclerView) findViewById(R.id.recyclerViewDrawer);
         recyclerViewDrawer.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity1.this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewDrawer.setLayoutManager(layoutManager);
 
@@ -261,7 +261,7 @@ public class MainActivity extends ActionBarActivity {
         adapterDrawer = new DrawerAdapter(drawerItems);
         recyclerViewDrawer.setAdapter(adapterDrawer);
         final TypedValue typedValue = new TypedValue();
-        MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        MainActivity1.this.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
         final int color = typedValue.data;
 
         //TODO try to get status bar translucent in landscape mode (lollipop)
@@ -445,7 +445,7 @@ public class MainActivity extends ActionBarActivity {
         relativeLayoutSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(MainActivity.this, Settings.class);
+                intent = new Intent(MainActivity1.this, Settings.class);
                 startActivity(intent);
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
